@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+  jpa:
+    properties:
+      hibernate:
+        default_schema: scrcowner
+        dialect: org.hibernate.dialect.OracleDialect
+        format_sql: false
+        show_sql: false

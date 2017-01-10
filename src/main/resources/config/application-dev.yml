@@ -1,0 +1,16 @@
+spring:
+  jpa:
+    properties:
+      hibernate:
+        format_sql: true
+        show_sql: true
+  datasource:
+    #OR append `?currentSchema=addsowner`
+    url: jdbc:oracle:thin:@kwalxorcld004.devlab.dev:1521:SCRC2D
+    username: scrcadmin
+    password: scrcadmin321
+
+hive:
+  url: rcemr.qc.aws.finra.org
+  user: rcapp
+  password: QGRob2NRdWVyeSRlcnZlcg==
