@@ -1,9 +1,4 @@
 spring:
-  jpa:
-    properties:
-      hibernate:
-        format_sql: true
-        show_sql: true
   datasource:
     #OR append `?currentSchema=addsowner`
     url: jdbc:oracle:thin:@kwalxorclq02b.qa.finra.org:1521:Scrcq
@@ -12,5 +7,5 @@ spring:
 
 hive:
   url: rcemr.qc.aws.finra.org
-  user: rcapp
+  username: rcapp
   password: QGRob2NRdWVyeSRlcnZlcg==

@@ -20,7 +20,7 @@ import org.finra.rc.hive2ora.model.SrcErdFixedIncmMuniEntity;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
-@ActiveProfiles("dev")
+@ActiveProfiles("test")
 public class HiveTest
 {
     @Autowired

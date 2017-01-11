@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    url: jdbc:oracle:thin:@scrc-vip.finra.org:1521:Scrcp
+    username: scrcadmin
+
+hive:
+  url: rcemr.aws.finra.org
+  username: rcapp
+
+#For prod, we need to pass in hive/oracle password as spring.datasource.password and hive.password

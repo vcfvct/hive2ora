@@ -7,8 +7,11 @@ import javax.sql.DataSource;
 
 import org.apache.hive.jdbc.HiveDriver;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceBuilder;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.SimpleDriverDataSource;
@@ -22,11 +25,19 @@ public class DaoSourceConfig
     @Autowired
     private Environment env;
 
+    @Bean
+    @Primary
+    @ConfigurationProperties(prefix = "spring.datasource")
+    public DataSource RdbmsDataSource()
+    {
+        return DataSourceBuilder.create().build();
+    }
+
     @Bean(name = "hiveDataSource")
     public DataSource hiveDataSource()
     {
         String server = env.getProperty("hive.url");
-        String user = env.getProperty("hive.user");
+        String user = env.getProperty("hive.username");
         String pw = new String(Base64.getDecoder()
                                      .decode(env.getProperty("hive.password")));
 

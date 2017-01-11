@@ -1,7 +1,7 @@
 package org.finra.rc.hive2ora;
 
-import javax.persistence.EntityManager;
-import javax.persistence.Query;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,25 +11,26 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import org.finra.rc.hive2ora.model.SrcErdFixedIncmMuniEntity;
+import org.finra.rc.hive2ora.service.MainService;
 
 /**
- * User: Han Li Date: 1/10/17
+ * User: Han Li Date: 1/11/17
  */
+@Transactional
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
 @ActiveProfiles("test")
-public class OracleTest
+public class TransferTest
 {
     @Autowired
-    private EntityManager em;
+    private MainService mainService;
 
+//    @Rollback(false)
     @Test
-    public void testQuery()
+    public void testImport()
     {
-        Query q = em.createQuery("FROM SrcErdFixedIncmMuniEntity", SrcErdFixedIncmMuniEntity.class);
-        q.setMaxResults(5);
-        q.getResultList().stream().forEach(System.out::println);
+        int limit = 30;
+        int rs = mainService.doImport(limit);
+        assertThat("should match limit", rs, is(limit));
     }
-
 }

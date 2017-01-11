@@ -5,6 +5,8 @@ spring:
     properties:
       hibernate:
         default_schema: scrcowner
-        dialect: org.hibernate.dialect.OracleDialect
+        dialect: org.hibernate.dialect.Oracle10gDialect
         format_sql: false
         show_sql: false
+        jdbc:
+          batch_size: 50
