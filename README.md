@@ -1,0 +1,1 @@
+A tool for import large number of rows from `Hive` to `RDBMS`(Oracle).
