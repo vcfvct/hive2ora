@@ -54,18 +54,28 @@ public class MainService
                 inc[0]++;
                 if (inc[0] % batchSize == 0)
                 {
-                    listToPersist.stream().forEach(em::persist);
-                    em.flush();
-                    em.clear();
-                    LOGGER.info("Saved record milestone: " + inc[0]);
-                    listToPersist.clear();
+                    persistAndClear(inc, listToPersist);
                 }
+            }
+            //left overs(last n items)
+            if(!listToPersist.isEmpty())
+            {
+                persistAndClear(inc, listToPersist);
             }
             return null;
         });
         Instant end = Instant.now();
         System.out.println("Data Intake took: " + Duration.between(start, end));
         return inc[0];
+    }
+
+    private void persistAndClear(int[] inc, List<SrcErdFixedIncmMuniEntity> listToPersist)
+    {
+        listToPersist.stream().forEach(em::persist);
+        em.flush();
+        em.clear();
+        LOGGER.info("Saved record milestone: " + inc[0]);
+        listToPersist.clear();
     }
 
     public void testService()
