@@ -3,7 +3,7 @@ spring:
     #OR append `?currentSchema=addsowner`
     url: jdbc:oracle:thin:@kwalxorclq02b.qa.finra.org:1521:Scrcq
     username: scrcadmin
-    password: pskjf927
+    rcpw: cHNramY5Mjc=
 
 hive:
   url: rcemr.qc.aws.finra.org

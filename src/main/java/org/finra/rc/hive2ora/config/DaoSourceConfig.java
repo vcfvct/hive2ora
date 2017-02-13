@@ -30,7 +30,9 @@ public class DaoSourceConfig
     @ConfigurationProperties(prefix = "spring.datasource")
     public DataSource RdbmsDataSource()
     {
-        return DataSourceBuilder.create().build();
+        return DataSourceBuilder.create()
+                                .password(new String(Base64.getDecoder().decode(env.getProperty("spring.datasource.rcpw"))))
+                                .build();
     }
 
     @Bean(name = "hiveDataSource")
