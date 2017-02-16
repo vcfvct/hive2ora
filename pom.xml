@@ -34,6 +34,12 @@
          <groupId>org.apache.hive</groupId>
          <artifactId>hive-jdbc</artifactId>
          <version>${hive.jdbc.version}</version>
+         <exclusions>
+            <exclusion>
+               <artifactId>slf4j-log4j12</artifactId>
+               <groupId>org.slf4j</groupId>
+            </exclusion>
+         </exclusions>
       </dependency>
 
       <!--need this dependency for the hive jdbc, otherwise we get classNotFound Error in the runtime -->
@@ -41,6 +47,12 @@
          <groupId>org.apache.hadoop</groupId>
          <artifactId>hadoop-common</artifactId>
          <version>${hadoop.common.version}</version>
+         <exclusions>
+            <exclusion>
+               <artifactId>slf4j-log4j12</artifactId>
+               <groupId>org.slf4j</groupId>
+            </exclusion>
+         </exclusions>
       </dependency>
 
       <dependency>
